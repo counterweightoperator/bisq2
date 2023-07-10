@@ -489,6 +489,10 @@ public class NetworkService implements PersistenceClient<NetworkServiceStore>, S
         persist();
     }
 
+    public void removeSeedNodeAddressByTransport(Map<Transport.Type, Address> seedNodeAddressesByTransport) {
+        this.serviceNodesByTransport.removeSeedNodeAddressByTransport(seedNodeAddressesByTransport);
+    }
+
     // If not persisted we try to create the networkId and persist if available.
     private Optional<NetworkId> maybePersistNewNetworkId(String nodeId, PubKey pubKey) {
         return findNetworkId(nodeId, pubKey)
