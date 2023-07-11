@@ -29,8 +29,10 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.VBox;
 
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
-    protected final MultiLineLabel headline, subHeadline, overviewHeadline, overview, contentHeadline, content;
-    protected final Hyperlink learnMore;
+    protected MultiLineLabel headline;
+    protected MultiLineLabel subHeadline;
+
+    protected Hyperlink learnMore;
 
     public AcademyView(M model, C controller) {
         super(new VBox(10), model, controller);
@@ -46,33 +48,11 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
         subHeadline.getStyleClass().addAll("font-size-14", "font-light", "text-fill-grey-dimmed");
         subHeadline.setWrapText(true);
 
-        overviewHeadline = new MultiLineLabel(Res.get("academy.overview"));
-        overviewHeadline.getStyleClass().addAll("font-size-16", "font-light");
-        overviewHeadline.setWrapText(true);
-
-        overview = new MultiLineLabel(Res.get("academy." + key + ".overview"));
-        overview.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
-        overview.setWrapText(true);
-
-        contentHeadline = new MultiLineLabel(Res.get("academy." + key + ".content.headline"));
-        contentHeadline.getStyleClass().addAll("font-size-16", "font-light");
-        contentHeadline.setWrapText(true);
-
-        content = new MultiLineLabel(Res.get("academy." + key + ".content"));
-        content.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
-        content.setWrapText(true);
-
         learnMore = new Hyperlink(Res.get("action.learnMore"));
         learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
 
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
-        VBox.setMargin(overviewHeadline, new Insets(25, 0, 0, 0));
-        VBox.setMargin(contentHeadline, new Insets(35, 0, 0, 0));
-        VBox.setMargin(content, new Insets(0, 0, 15, 0));
-        root.getChildren().addAll(headline, subHeadline,
-                overviewHeadline, overview,
-                contentHeadline, content,
-                learnMore);
+        root.getChildren().addAll(headline, subHeadline, learnMore);
 
     }
 
