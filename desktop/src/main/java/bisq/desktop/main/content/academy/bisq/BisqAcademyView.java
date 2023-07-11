@@ -29,19 +29,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyController> {
 
+    protected MultiLineLabel overviewHeadline;
+    protected MultiLineLabel overview;
+    protected MultiLineLabel contentHeadline;
+    protected MultiLineLabel content;
+
     public BisqAcademyView(BisqAcademyModel model, BisqAcademyController controller) {
         super(model, controller);
 
         String key = getKey();
-        headline = new MultiLineLabel(Res.get("academy.overview." + key));
-        headline.setGraphic(ImageUtil.getImageViewById(getIconId()));
-        headline.getStyleClass().addAll("font-size-20", "font-light");
-        headline.setGraphicTextGap(10);
-        headline.setWrapText(true);
-
-        subHeadline = new MultiLineLabel(Res.get("academy." + key + ".subHeadline"));
-        subHeadline.getStyleClass().addAll("font-size-14", "font-light", "text-fill-grey-dimmed");
-        subHeadline.setWrapText(true);
 
         overviewHeadline = new MultiLineLabel(Res.get("academy.overview"));
         overviewHeadline.getStyleClass().addAll("font-size-16", "font-light");
@@ -59,17 +55,16 @@ public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyCo
         content.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
         content.setWrapText(true);
 
-        learnMore = new Hyperlink(Res.get("action.learnMore"));
-        learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
-
-        VBox.setMargin(headline, new Insets(0, 0, 0, 0));
         VBox.setMargin(overviewHeadline, new Insets(25, 0, 0, 0));
         VBox.setMargin(contentHeadline, new Insets(35, 0, 0, 0));
         VBox.setMargin(content, new Insets(0, 0, 15, 0));
-        root.getChildren().addAll(headline, subHeadline,
-                overviewHeadline, overview,
-                contentHeadline, content,
-                learnMore);
+        root.getChildren().add(2, overviewHeadline);
+        //TODO
+        // - Add all the other elements
+        // - Find an elegant solution to not hardcode that 2 above. An attribute in the parent view?
+
+        // root.getChildren().addAll(overviewHeadline, overview,
+        //        contentHeadline, content);
     }
 
     @Override
