@@ -32,6 +32,8 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
     protected final Label headline, subHeadline, overviewHeadline, overview, contentHeadline, content;
     protected final Hyperlink learnMore;
 
+    protected int commonHeaderElementsCount;
+
     public AcademyView(M model, C controller) {
         super(new VBox(10), model, controller);
 
@@ -51,7 +53,7 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
 
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
         root.getChildren().addAll(headline, subHeadline, learnMore);
-
+        commonHeaderElementsCount = 3; // TODO get this from the elements length instead of hardcode
     }
 
     protected abstract String getIconId();
