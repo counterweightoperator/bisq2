@@ -26,6 +26,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.VBox;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+
 @Slf4j
 public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyController> {
 
@@ -58,13 +60,7 @@ public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyCo
         VBox.setMargin(overviewHeadline, new Insets(25, 0, 0, 0));
         VBox.setMargin(contentHeadline, new Insets(35, 0, 0, 0));
         VBox.setMargin(content, new Insets(0, 0, 15, 0));
-        root.getChildren().add(2, overviewHeadline);
-        //TODO
-        // - Add all the other elements
-        // - Find an elegant solution to not hardcode that 2 above. An attribute in the parent view?
-
-        // root.getChildren().addAll(overviewHeadline, overview,
-        //        contentHeadline, content);
+        root.getChildren().addAll(commonHeaderElementsCount - 1, Arrays.asList(overviewHeadline, overview, contentHeadline, content));
     }
 
     @Override
