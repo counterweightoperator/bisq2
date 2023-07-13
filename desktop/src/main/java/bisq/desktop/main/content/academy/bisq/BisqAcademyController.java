@@ -31,6 +31,11 @@ public class BisqAcademyController implements Controller {
     }
 
     @Override
+    public boolean useCaching() {
+        return false;
+    }
+
+    @Override
     public void onActivate() {
     }
 
