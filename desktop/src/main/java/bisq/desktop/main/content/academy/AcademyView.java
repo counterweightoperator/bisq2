@@ -28,10 +28,14 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.util.Arrays;
+import java.util.List;
+
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
     protected final Label headline, subHeadline, overviewHeadline, overview, contentHeadline, content;
     protected final Hyperlink learnMore;
 
+    protected List<Labeled> commonHeaderElements;
     protected int commonHeaderElementsCount;
 
     public AcademyView(M model, C controller) {
@@ -52,8 +56,10 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
         learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
 
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
-        root.getChildren().addAll(headline, subHeadline, learnMore);
-        commonHeaderElementsCount = 3; // TODO get this from the elements length instead of hardcode
+
+        commonHeaderElements = Arrays.asList(headline, subHeadline, learnMore);//, subHeadline, learnMore);
+        root.getChildren().addAll(commonHeaderElements);
+        commonHeaderElementsCount = commonHeaderElements.size();
     }
 
     protected abstract String getIconId();
