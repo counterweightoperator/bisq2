@@ -17,12 +17,10 @@
 
 package bisq.desktop.main.content.academy.bisq;
 
-import bisq.desktop.common.utils.ImageUtil;
 import bisq.desktop.components.controls.MultiLineLabel;
 import bisq.desktop.main.content.academy.AcademyView;
 import bisq.i18n.Res;
 import javafx.geometry.Insets;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.VBox;
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,36 +29,55 @@ import java.util.Arrays;
 @Slf4j
 public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyController> {
 
-    protected MultiLineLabel overviewHeadline;
-    protected MultiLineLabel overview;
-    protected MultiLineLabel contentHeadline;
-    protected MultiLineLabel content;
+    protected MultiLineLabel exchangeDecentralizedHeadline;
+    protected MultiLineLabel exchangeDecentralizedContent;
+    protected MultiLineLabel whyBisqHeadline;
+    protected MultiLineLabel whyBisqContent;
+
+    protected MultiLineLabel tradeSafelyHeadline;
+    protected MultiLineLabel tradeSafelyContent;
 
     public BisqAcademyView(BisqAcademyModel model, BisqAcademyController controller) {
         super(model, controller);
 
         String key = getKey();
 
-        overviewHeadline = new MultiLineLabel(Res.get("academy.overview"));
-        overviewHeadline.getStyleClass().addAll("font-size-16", "font-light");
-        overviewHeadline.setWrapText(true);
+        exchangeDecentralizedHeadline = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedHeadline"));
+        exchangeDecentralizedHeadline.getStyleClass().addAll("font-size-16", "font-light");
+        exchangeDecentralizedHeadline.setWrapText(true);
 
-        overview = new MultiLineLabel(Res.get("academy." + key + ".overview"));
-        overview.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
-        overview.setWrapText(true);
+        exchangeDecentralizedContent = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedContent"));
+        exchangeDecentralizedContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
+        exchangeDecentralizedContent.setWrapText(true);
 
-        contentHeadline = new MultiLineLabel(Res.get("academy." + key + ".content.headline"));
-        contentHeadline.getStyleClass().addAll("font-size-16", "font-light");
-        contentHeadline.setWrapText(true);
+        whyBisqHeadline = new MultiLineLabel(Res.get("academy." + key + ".whyBisqHeadline"));
+        whyBisqHeadline.getStyleClass().addAll("font-size-16", "font-light");
+        whyBisqHeadline.setWrapText(true);
 
-        content = new MultiLineLabel(Res.get("academy." + key + ".content"));
-        content.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
-        content.setWrapText(true);
+        whyBisqContent = new MultiLineLabel(Res.get("academy." + key + ".whyBisqContent"));
+        whyBisqContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
+        whyBisqContent.setWrapText(true);
 
-        VBox.setMargin(overviewHeadline, new Insets(25, 0, 0, 0));
-        VBox.setMargin(contentHeadline, new Insets(35, 0, 0, 0));
-        VBox.setMargin(content, new Insets(0, 0, 15, 0));
-        root.getChildren().addAll(commonHeaderElementsCount - 1, Arrays.asList(overviewHeadline, overview, contentHeadline, content));
+        tradeSafelyHeadline = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyHeadline"));
+        tradeSafelyHeadline.getStyleClass().addAll("font-size-16", "font-light");
+        tradeSafelyHeadline.setWrapText(true);
+
+        tradeSafelyContent = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyContent"));
+        tradeSafelyContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
+        tradeSafelyContent.setWrapText(true);
+
+        VBox.setMargin(exchangeDecentralizedHeadline, new Insets(25, 0, 0, 0));
+        VBox.setMargin(whyBisqHeadline, new Insets(35, 0, 0, 0));
+        VBox.setMargin(tradeSafelyHeadline, new Insets(35, 0, 0, 0));
+        VBox.setMargin(tradeSafelyContent, new Insets(0, 0, 15, 0));
+        root.getChildren().addAll(commonHeaderElementsCount - 1, Arrays.asList(
+                exchangeDecentralizedHeadline,
+                exchangeDecentralizedContent,
+                whyBisqHeadline,
+                whyBisqContent,
+                tradeSafelyHeadline,
+                tradeSafelyContent
+        ));
     }
 
     @Override
