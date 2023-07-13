@@ -26,7 +26,11 @@ import bisq.desktop.components.controls.MultiLineLabel;
 import bisq.i18n.Res;
 import javafx.geometry.Insets;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Labeled;
 import javafx.scene.layout.VBox;
+
+import java.util.Arrays;
+import java.util.List;
 
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
     protected MultiLineLabel headline;
@@ -34,6 +38,7 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
 
     protected Hyperlink learnMore;
 
+    protected List<Labeled> commonHeaderElements;
     protected int commonHeaderElementsCount;
 
     public AcademyView(M model, C controller) {
@@ -54,8 +59,10 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
         learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
 
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
-        root.getChildren().addAll(headline, subHeadline, learnMore);
-        commonHeaderElementsCount = 3; // TODO get this from the elements length instead of hardcode
+
+        commonHeaderElements = Arrays.asList(headline, subHeadline, learnMore);//, subHeadline, learnMore);
+        root.getChildren().addAll(commonHeaderElements);
+        commonHeaderElementsCount = commonHeaderElements.size();
     }
 
     protected abstract String getIconId();
