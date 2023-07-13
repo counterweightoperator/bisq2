@@ -35,7 +35,7 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
     protected final Label headline, subHeadline, overviewHeadline, overview, contentHeadline, content;
     protected final Hyperlink learnMore;
 
-    protected List<Labeled> commonHeaderElements;
+    final List<Labeled> commonHeaderElements;
     protected int commonHeaderElementsCount;
 
     public AcademyView(M model, C controller) {
