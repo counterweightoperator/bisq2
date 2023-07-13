@@ -33,12 +33,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
-    protected MultiLineLabel headline;
-    protected MultiLineLabel subHeadline;
+    final MultiLineLabel headline;
+    final MultiLineLabel subHeadline;
 
-    protected Hyperlink learnMore;
+    final Hyperlink learnMore;
 
-    protected List<Labeled> commonHeaderElements;
+    final List<Labeled> commonHeaderElements;
     protected int commonHeaderElementsCount;
 
     public AcademyView(M model, C controller) {

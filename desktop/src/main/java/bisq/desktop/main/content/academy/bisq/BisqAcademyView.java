@@ -29,13 +29,13 @@ import java.util.Arrays;
 @Slf4j
 public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyController> {
 
-    protected MultiLineLabel exchangeDecentralizedHeadline;
-    protected MultiLineLabel exchangeDecentralizedContent;
-    protected MultiLineLabel whyBisqHeadline;
-    protected MultiLineLabel whyBisqContent;
+    final MultiLineLabel exchangeDecentralizedHeadline;
+    final MultiLineLabel exchangeDecentralizedContent;
+    final MultiLineLabel whyBisqHeadline;
+    final MultiLineLabel whyBisqContent;
 
-    protected MultiLineLabel tradeSafelyHeadline;
-    protected MultiLineLabel tradeSafelyContent;
+    final MultiLineLabel tradeSafelyHeadline;
+    final MultiLineLabel tradeSafelyContent;
 
     public BisqAcademyView(BisqAcademyModel model, BisqAcademyController controller) {
         super(model, controller);
