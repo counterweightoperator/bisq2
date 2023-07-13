@@ -29,32 +29,40 @@ import java.util.Arrays;
 @Slf4j
 public class BisqAcademyView extends AcademyView<BisqAcademyModel, BisqAcademyController> {
 
+    protected MultiLineLabel exchangeDecentralizedHeadline;
+    protected MultiLineLabel exchangeDecentralizedContent;
+    protected MultiLineLabel whyBisqHeadline;
+    protected MultiLineLabel whyBisqContent;
+
+    protected MultiLineLabel tradeSafelyHeadline;
+    protected MultiLineLabel tradeSafelyContent;
+
     public BisqAcademyView(BisqAcademyModel model, BisqAcademyController controller) {
         super(model, controller);
 
         String key = getKey();
 
-        MultiLineLabel exchangeDecentralizedHeadline = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedHeadline"));
+        exchangeDecentralizedHeadline = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedHeadline"));
         exchangeDecentralizedHeadline.getStyleClass().addAll("font-size-16", "font-light");
         exchangeDecentralizedHeadline.setWrapText(true);
 
-        MultiLineLabel exchangeDecentralizedContent = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedContent"));
+        exchangeDecentralizedContent = new MultiLineLabel(Res.get("academy." + key + ".exchangeDecentralizedContent"));
         exchangeDecentralizedContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
         exchangeDecentralizedContent.setWrapText(true);
 
-        MultiLineLabel whyBisqHeadline = new MultiLineLabel(Res.get("academy." + key + ".whyBisqHeadline"));
+        whyBisqHeadline = new MultiLineLabel(Res.get("academy." + key + ".whyBisqHeadline"));
         whyBisqHeadline.getStyleClass().addAll("font-size-16", "font-light");
         whyBisqHeadline.setWrapText(true);
 
-        MultiLineLabel whyBisqContent = new MultiLineLabel(Res.get("academy." + key + ".whyBisqContent"));
+        whyBisqContent = new MultiLineLabel(Res.get("academy." + key + ".whyBisqContent"));
         whyBisqContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
         whyBisqContent.setWrapText(true);
 
-        MultiLineLabel tradeSafelyHeadline = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyHeadline"));
+        tradeSafelyHeadline = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyHeadline"));
         tradeSafelyHeadline.getStyleClass().addAll("font-size-16", "font-light");
         tradeSafelyHeadline.setWrapText(true);
 
-        MultiLineLabel tradeSafelyContent = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyContent"));
+        tradeSafelyContent = new MultiLineLabel(Res.get("academy." + key + ".tradeSafelyContent"));
         tradeSafelyContent.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
         tradeSafelyContent.setWrapText(true);
 
