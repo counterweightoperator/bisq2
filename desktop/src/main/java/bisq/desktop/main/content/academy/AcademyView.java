@@ -26,20 +26,13 @@ import bisq.desktop.components.controls.MultiLineLabel;
 import bisq.i18n.Res;
 import javafx.geometry.Insets;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Labeled;
 import javafx.scene.layout.VBox;
 
-import java.util.Arrays;
-import java.util.List;
-
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
-    final MultiLineLabel headline;
-    final MultiLineLabel subHeadline;
+    protected final MultiLineLabel headline;
+    protected final MultiLineLabel subHeadline;
 
-    final Hyperlink learnMore;
-
-    final List<Labeled> commonHeaderElements;
-    protected int commonHeaderElementsCount;
+    protected final Hyperlink learnMore;
 
     public AcademyView(M model, C controller) {
         super(new VBox(10), model, controller);
@@ -60,9 +53,21 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
 
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
 
-        commonHeaderElements = Arrays.asList(headline, subHeadline, learnMore);//, subHeadline, learnMore);
-        root.getChildren().addAll(commonHeaderElements);
-        commonHeaderElementsCount = commonHeaderElements.size();
+        root.getChildren().addAll(headline, subHeadline, learnMore);
+    }
+
+    protected MultiLineLabel addHeadlineLabel(String headlineKey) {
+        MultiLineLabel multiLineLabel = new MultiLineLabel(Res.get("academy." + getKey() + "." + headlineKey));
+        multiLineLabel.getStyleClass().addAll("font-size-16", "font-light");
+        root.getChildren().add(multiLineLabel);
+        return multiLineLabel;
+    }
+
+    protected MultiLineLabel addContentLabel(String contentKey) {
+        MultiLineLabel multiLineLabel = new MultiLineLabel(Res.get("academy." + getKey() + "." + contentKey));
+        multiLineLabel.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
+        root.getChildren().add(multiLineLabel);
+        return multiLineLabel;
     }
 
     protected abstract String getIconId();
