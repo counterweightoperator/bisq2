@@ -146,6 +146,15 @@ public class BisqEasyPrivateTradeChatChannelService extends PrivateGroupChatChan
         return sendMessage(text, Optional.empty(), ChatMessageType.SYSTEM_MESSAGE, channel);
     }
 
+    public CompletableFuture<NetworkService.SendMessageResult> sendTakeOfferMessage(BisqEasyPrivateTradeChatChannel channel) {
+        return sendMessage(null, Optional.empty(), ChatMessageType.TAKE_BISQ_EASY_OFFER, channel);
+    }
+
+    public CompletableFuture<NetworkService.SendMessageResult> sendSystemMessage(String text,
+                                                                                 BisqEasyPrivateTradeChatChannel channel) {
+        return sendMessage(text, Optional.empty(), ChatMessageType.SYSTEM_MESSAGE, channel);
+    }
+
     public CompletableFuture<NetworkService.SendMessageResult> sendTextMessage(String text,
                                                                                Optional<Citation> citation,
                                                                                BisqEasyPrivateTradeChatChannel channel) {
