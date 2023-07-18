@@ -28,15 +28,11 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import java.util.Arrays;
-import java.util.List;
 
 public abstract class AcademyView<M extends Model, C extends Controller> extends View<VBox, M, C> {
     protected final Label headline, subHeadline, overviewHeadline, overview, contentHeadline, content;
     protected final Hyperlink learnMore;
 
-    final List<Labeled> commonHeaderElements;
-    protected int commonHeaderElementsCount;
 
     public AcademyView(M model, C controller) {
         super(new VBox(10), model, controller);
@@ -52,14 +48,30 @@ public abstract class AcademyView<M extends Model, C extends Controller> extends
         subHeadline.getStyleClass().addAll("font-size-14", "font-light", "text-fill-grey-dimmed");
         subHeadline.setWrapText(true);
 
-        learnMore = new Hyperlink(Res.get("action.learnMore"));
-        learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
-
         VBox.setMargin(headline, new Insets(0, 0, 0, 0));
 
-        commonHeaderElements = Arrays.asList(headline, subHeadline, learnMore);//, subHeadline, learnMore);
-        root.getChildren().addAll(commonHeaderElements);
-        commonHeaderElementsCount = commonHeaderElements.size();
+        root.getChildren().addAll(headline, subHeadline);
+    }
+
+    protected MultiLineLabel addHeadlineLabel(String headlineKey) {
+        MultiLineLabel multiLineLabel = new MultiLineLabel(Res.get("academy." + getKey() + "." + headlineKey));
+        multiLineLabel.getStyleClass().addAll("font-size-16", "font-light");
+        root.getChildren().add(multiLineLabel);
+        return multiLineLabel;
+    }
+
+    protected MultiLineLabel addContentLabel(String contentKey) {
+        MultiLineLabel multiLineLabel = new MultiLineLabel(Res.get("academy." + getKey() + "." + contentKey));
+        multiLineLabel.getStyleClass().addAll("font-size-12", "font-light", "bisq-line-spacing-01");
+        root.getChildren().add(multiLineLabel);
+        return multiLineLabel;
+    }
+
+    protected Hyperlink addLearnMoreLabel() {
+        learnMore = new Hyperlink(Res.get("action.learnMore"));
+        learnMore.getStyleClass().addAll("font-size-12", "text-fill-green");
+        root.getChildren().add(learnMore);
+        return learnMore;
     }
 
     protected abstract String getIconId();
